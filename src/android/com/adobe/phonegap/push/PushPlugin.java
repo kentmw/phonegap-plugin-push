@@ -240,7 +240,7 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
             while (it.hasNext()) {
                 String key = it.next();
                 Object value = extras.get(key);
-                 
+
                 Log.d(LOG_TAG, "key = " + key);
 
                 if (jsonKeySet.contains(key)) {
@@ -265,7 +265,7 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                         }
                         else {
                             additionalData.put(key, value);
-                        }                       
+                        }
                     } catch (Exception e) {
                         additionalData.put(key, value);
                     }
