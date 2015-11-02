@@ -128,6 +128,11 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
         } else if (UNREGISTER.equals(action)) {
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
+                    SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(COM_ADOBE_PHONEGAP_PUSH, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.remove(REGISTRATION_ID);
+                    editor.remove(SENDER_ID);
+                    editor.commit();
                     try {
                         InstanceID.getInstance(getApplicationContext()).deleteInstanceID();
                         Log.v(LOG_TAG, "UNREGISTER");
